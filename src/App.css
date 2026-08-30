@@ -1,0 +1,61 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f1f3f5;
+}
+
+.app{
+  min-height: 100vh;
+  padding: 30px;
+  text-align: center;
+}
+
+h1{
+  margin-bottom: 25px;
+}
+
+.toolbar button{
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: white;
+  font-size: 15px;
+}
+
+.toolbar button:hover{
+  background:  #e9ecef;
+}
+
+.toolbar button.active {
+  background: #212529;
+  color: white;
+}
+
+.toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.canvas-container {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.drawing-canvas {
+  display: block;
+  width: 1000px;
+  height: 600px;
+  border: 2px solid #333;
+  background: white;
+}
