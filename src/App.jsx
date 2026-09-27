@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Canvas from "./components/Canvas";
 import Toolbar from "./components/Toolbar";
+import ColorPalette from "./components/ColorPalette";
 import "./App.css";
 
 function App() {
@@ -14,56 +15,56 @@ function App() {
   const [redoStack, setRedoStack] = useState([]);
 
   const undo = () => {
-  if (undoStack.length === 0) return;
+    if (undoStack.length === 0) return;
 
-  const previousState =
-    undoStack[undoStack.length - 1];
+    const previousState =
+      undoStack[undoStack.length - 1];
 
-  const currentState =
-    canvasRef.current.getSnapshot();
+    const currentState =
+      canvasRef.current.getSnapshot();
 
-  setUndoStack((prev) => prev.slice(0, -1));
+    setUndoStack((prev) => prev.slice(0, -1));
 
-  setRedoStack((prev) => [
-    ...prev,
-    currentState,
-  ]);
+    setRedoStack((prev) => [
+      ...prev,
+      currentState,
+    ]);
 
-  canvasRef.current.restoreSnapshot(previousState);
-};
+    canvasRef.current.restoreSnapshot(previousState);
+  };
 
-const redo = () => {
-  if (redoStack.length === 0) return;
+  const redo = () => {
+    if (redoStack.length === 0) return;
 
-  const nextState =
-    redoStack[redoStack.length - 1];
+    const nextState =
+      redoStack[redoStack.length - 1];
 
-  const currentState =
-    canvasRef.current.getSnapshot();
+    const currentState =
+      canvasRef.current.getSnapshot();
 
-  setRedoStack((prev) => prev.slice(0, -1));
+    setRedoStack((prev) => prev.slice(0, -1));
 
-  setUndoStack((prev) => [
-    ...prev,
-    currentState,
-  ]);
+    setUndoStack((prev) => [
+      ...prev,
+      currentState,
+    ]);
 
-  canvasRef.current.restoreSnapshot(nextState);
-};
+    canvasRef.current.restoreSnapshot(nextState);
+  };
 
-const clearCanvas = () => {
-  if (!canvasRef.current) return;
+  const clearCanvas = () => {
+    if (!canvasRef.current) return;
 
-  const currentState = canvasRef.current.getSnapshot();
+    const currentState = canvasRef.current.getSnapshot();
 
-  // Save current drawing so Clear can be undone
-  setUndoStack((prev) => [...prev, currentState]);
+    // Save current drawing so Clear can be undone
+    setUndoStack((prev) => [...prev, currentState]);
 
-  // Clear redo history
-  setRedoStack([]);
+    // Clear redo history
+    setRedoStack([]);
 
-  canvasRef.current.clearCanvas();
-};
+    canvasRef.current.clearCanvas();
+  };
 
 
   const downloadCanvas = () => {
@@ -122,11 +123,14 @@ const saveBeforeDrawing = () => {
 
       <h1>🎨 MS Paint</h1>
 
+      <ColorPalette 
+        color={color} 
+        setColor={setColor} 
+      />
+
       <Toolbar
         tool={tool}
         setTool={setTool}
-        color={color}
-        setColor={setColor}
         brushSize={brushSize}
         setBrushSize={setBrushSize}
         onUndo={undo}
@@ -134,7 +138,6 @@ const saveBeforeDrawing = () => {
         onClear={clearCanvas}
         onDownload={downloadCanvas}
         onReset={resetCanvas}
-
       />
 
       <div className="canvas-container">

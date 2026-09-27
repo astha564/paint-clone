@@ -59,3 +59,46 @@ h1{
   border: 2px solid #333;
   background: white;
 }
+
+.color-palette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.palette-title {
+  font-weight: 600;
+}
+
+.color-options {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color-button {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+}
+
+.color-button.selected {
+  border: 3px solid #222;
+}
+
+.custom-color {
+  width: 35px;
+  height: 35px;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,15 +1,13 @@
-function Toolbar({ 
-    tool, 
-    setTool, 
-    brushSize, 
-    setBrushSize, 
-    color, 
-    setColor,
-    onUndo,
-    onRedo,
-    onClear,
-    onDownload,
-    onReset,
+function Toolbar({
+  tool,
+  setTool,
+  brushSize,
+  setBrushSize,
+  onUndo,
+  onRedo,
+  onClear,
+  onDownload,
+  onReset,
 }) {
     return (
         <div className="toolbar">
@@ -103,14 +101,7 @@ function Toolbar({
                 />
             </label>
 
-            <label>
-                Color:
-                <input 
-                    type="color"
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                />
-            </label>
+          
         </div>
     );
 
